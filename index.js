@@ -2,7 +2,7 @@ var path = require('path');
 var glob = require('glob');
 var utils = require('./lib/utils');
 var defaultCfg = {
-  routePath: 'routesFolder'
+  routePath: 'routes'
 };
 var basename = path.basename;
 var dirname = path.dirname;
