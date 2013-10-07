@@ -18,10 +18,9 @@ function autoRouteExpress(app) {
             if (!(method.substring(0, 1) === '_')) {
                 var pathName = dirname(file).replace('$', ':').replace(pathPrefix, '');
 
-
                 var fullFilePath = path.join(cwd, file);
 
-                console.log(method + ' ' + pathName + ' - from ' + fullFilePath);
+                console.log('Added route' + method + ' ' + pathName + ' - from ' + fullFilePath);
 
                 var fn = require(fullFilePath);
 
