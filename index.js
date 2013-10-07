@@ -7,7 +7,7 @@ var path = require('path'),
 module.exports = autoRouteExpress;
 
 function autoRouteExpress(app) {
-    console.log(__dirname);
+    var cwd = process.cwd();
 
     glob(pathPrefix + '/**/*.js', {}, function (err, files) {
         for (var i = 0; i < files.length; i++) {
@@ -16,13 +16,16 @@ function autoRouteExpress(app) {
             var method = basename(file, '.js');
 
             if (!(method.substring(0, 1) === '_')) {
-                var path = dirname(file).replace('$', ':').replace(pathPrefix, '');
+                var pathName = dirname(file).replace('$', ':').replace(pathPrefix, '');
 
-                var fn = require('./' + file);
 
-                console.log(method + ' ' + path + ' - from ' + file);
+                var fullFilePath = path.join(cwd, file);
 
-                app[method](path, fn);
+                console.log(method + ' ' + pathName + ' - from ' + fullFilePath);
+
+                var fn = require(fullFilePath);
+
+                app[method](pathName, fn);
             }
         }
     });
