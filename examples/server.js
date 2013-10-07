@@ -1,6 +1,6 @@
 var express = require('express'),
     app = module.exports = express(),
-    autoExpress = require('..'),
+    autoRouteExpress = require('..'),
     port = 8082;
 
 // Configuration
@@ -8,7 +8,7 @@ app.configure(function () {
     app.use(express.logger('[:date] :method :url :status - :response-time ms'));
     app.use(express.bodyParser());
 
-    autoExpress(app);
+    autoRouteExpress(app);
 });
 
 app.listen(port);

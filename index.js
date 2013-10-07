@@ -4,9 +4,11 @@ var path = require('path'),
     basename = path.basename,
     dirname = path.dirname;
 
-module.exports = autoExpress;
+module.exports = autoRouteExpress;
 
-function autoExpress(app) {
+function autoRouteExpress(app) {
+    console.log(__dirname);
+
     glob(pathPrefix + '/**/*.js', {}, function (err, files) {
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
