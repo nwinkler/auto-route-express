@@ -8,7 +8,7 @@ app.configure(function () {
   app.use(express.logger('[:date] :method :url :status - :response-time ms'));
   app.use(express.bodyParser());
 
-  autoRouteExpress(app);
+  autoRouteExpress(app, {routePath: 'routes'});
 });
 
 app.listen(port);
