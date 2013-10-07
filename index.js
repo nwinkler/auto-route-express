@@ -1,5 +1,5 @@
 var path = require('path');
-var glob = require('glob'),
+var glob = require('glob');
 var pathPrefix = 'routes';
 var basename = path.basename;
 var dirname = path.dirname;
