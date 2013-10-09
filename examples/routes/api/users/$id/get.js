@@ -16,3 +16,17 @@ function getUser(req, res) {
     }
   }
 }
+
+function middleware1 (req, res, next) {
+  res.header('foo', 'bar');
+
+  next();
+}
+
+function middleware2 (req, res, next) {
+  res.header('foo2', 'bar2');
+
+  next();
+}
+
+module.exports.middlewares = [middleware1, middleware2];

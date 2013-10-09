@@ -37,13 +37,17 @@ function autoRouteExpress(app, cfg) {
         // Create the full path of the file to load
         var fullFilePath = path.join(cwd, file);
 
-        console.log('Added route' + method + ' ' + pathName + ' - from ' + fullFilePath);
+        console.log('Adding route ' + method + ' ' + pathName + ' - from ' + fullFilePath);
 
         // Load the file and the contained function
         var fn = require(fullFilePath);
 
+        var middlewares = fn.middlewares || [];
+
+        console.log('Middlewares: ' + middlewares);
+
         // Define the route for the given path and function
-        app[method](pathName, fn);
+        app[method](pathName, middlewares, fn);
       }
     }
   });
